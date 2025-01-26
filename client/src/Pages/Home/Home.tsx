@@ -47,7 +47,7 @@ const Home = () => {
     ];
 
     return (
-        <section className="container my-4 w-100">
+        <section className="container my-4 w-100 h-100">
             <div className="row">
                 <div className="col-md-3">
                     <h2 className="text-center mb-4 text-primary">Crear Usuario</h2>
