@@ -15,7 +15,7 @@ It also features a frontend created in React.js, with a user-friendly interface 
 
 ### 📌 How to get started?
 
-This project requires a `.env` backend and frontend file in the root directory to configure your database and server.
+This project requires a `.env` frontend file in the root directory to configure your database and server.
 
 #### Frontend Setup:
 
