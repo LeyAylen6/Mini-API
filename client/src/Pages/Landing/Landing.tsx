@@ -4,7 +4,7 @@ import managmentImage from "./../../assets/managment.svg"
 const Landing = () => {
     return (
         <section className="container-fluid bg-light d-flex align-items-center py-5 h-100 w-100">
-            <div className="container d-flex justify-content-between ">
+            <div className="container d-flex justify-content-between pt-5">
                 <div className="col-lg-5">
                     <h2 className="display-4 fw-bold text-primary">
                         Gestiona usuarios de forma eficiente

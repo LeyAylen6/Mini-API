@@ -1,8 +1,8 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 
-import Landing from './Pages/Landing/Landing'
-import Home from './Pages/Home/Home'
+import Landing from './pages/Landing/Landing'
+import Home from './pages/Home/Home'
 
 function App() {
   return (

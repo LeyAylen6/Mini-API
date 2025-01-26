@@ -3,7 +3,7 @@ import { User } from "../../interfaces";
 import { createUser, getAllUsers } from "../../services/apiService";
 import Card from "../../components/Card/Card";
 
-const initialUserState = { name: "", email: "", age: 0 }
+const initialUserState = { name: "", email: "", age: undefined }
 
 const Home = () => {
     const [users, setUsers] = useState<User[]>([])
@@ -27,7 +27,7 @@ const Home = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (newUser.name && newUser.email && newUser.age > 0) {
+        if (newUser.name && newUser.email && newUser.age && newUser.age > 0) {
             const user = await createUser(newUser)
             addNewUser(user)
             setNewUser(initialUserState);
@@ -41,9 +41,9 @@ const Home = () => {
     }, []);
 
     const formFields = [
-        { id: "name", label: "Nombre", type: "text", name: "name" },
-        { id: "email", label: "Email", type: "email", name: "email" },
-        { id: "age", label: "Edad", type: "number", name: "age" },
+        { id: "name", label: "Nombre", type: "text", name: "name", placeholder: "Ej: Leila Salguero" },
+        { id: "email", label: "Email", type: "email", name: "email", placeholder: "Ej: leiisalguero@gmail.com" },
+        { id: "age", label: "Edad", type: "number", name: "age", placeholder: "Ej: 24" },
     ];
 
     return (
@@ -56,12 +56,10 @@ const Home = () => {
                             <div className="mb-3" key={field.id}>
                                 <label htmlFor={field.id} className="form-label">{field.label}</label>
                                 <input
-                                    type={field.type}
                                     className="form-control"
-                                    id={field.id}
-                                    name={field.name}
                                     value={newUser[field.name as keyof User]}
                                     onChange={handleChange}
+                                    {...field}
                                     required
                                 />
                             </div>
@@ -73,13 +71,15 @@ const Home = () => {
                 <div className="col-md-9">
                     <h1 className="text-center mb-4 text-primary">Usuarios</h1>
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        {users?.map((user) => (
-                            <div key={user.id} className="col-1">
-                                <div className="card shadow-lg border-light rounded-3">
-                                    <Card user={user} />
+                        {users.length ? (
+                            users.map((user) => (
+                                <div key={user.id} className="col-1">
+                                    <div className="card shadow-lg border-light rounded-3">
+                                        <Card user={user} />
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            )))
+                            : <p className="text-center lead w-100">Ups! Aún no hay usuarios registrados</p>}
                     </div>
                 </div>
             </div>
