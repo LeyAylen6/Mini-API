@@ -28,6 +28,7 @@ public class ExceptionController {
         });
 
         ErrorResponse error =  new ErrorResponse("Invalid fields", errorsDetail);
+        log.error(exception.getMessage());
 
         return new ResponseEntity<ErrorResponse>(error, HttpStatus.BAD_REQUEST);
     }
@@ -35,6 +36,7 @@ public class ExceptionController {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneralException(Exception exception) {
         ErrorResponse error =  new ErrorResponse(exception.getMessage());
+        log.error(exception.getMessage());
 
         return new ResponseEntity<ErrorResponse>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
